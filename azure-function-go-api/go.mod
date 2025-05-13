@@ -1,7 +1,7 @@
-module azure-function-go-api
+module github.com/jacygao/evoke-api.git
 
 go 1.24
 
 require (
-    github.com/Azure/azure-functions-go v0.0.0-20220331120000-abcdef123456 // replace with actual version
+    github.com/Azure/azure-functions-go v0.6.0 // indirect
 )
