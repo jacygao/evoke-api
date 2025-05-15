@@ -1,3 +1,4 @@
+using EvokeApi.AzureAi;
 using EvokeApi.Database;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,13 @@ namespace EvokeApi.Notes
         private readonly ILogger<NotesController> _logger;
         private readonly INotesDb _notesDb;
         private static readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        private readonly IAiService _aiService;
 
-        public NotesController(ILogger<NotesController> logger, INotesDb noteDb)
+        public NotesController(ILogger<NotesController> logger, INotesDb noteDb, IAiService aiService)
         {
             _logger = logger;
             _notesDb = noteDb;
+            _aiService = aiService;
         }
 
         [Function("CreateNotes")]
@@ -34,7 +37,9 @@ namespace EvokeApi.Notes
                 {
                     return new BadRequestObjectResult("Invalid request body.");
                 }
-                
+
+                note.Content = await _aiService.CompletionAsync(note.Content);
+
                 await _notesDb.InsertAsync(note, note.UserId);
             }
             catch (JsonException ex)

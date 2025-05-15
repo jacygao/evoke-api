@@ -18,6 +18,8 @@ namespace EvokeApi.Database
 
         public async Task InsertAsync(Note note, string partitionKey)
         {
+            note.Id = Guid.NewGuid().ToString();
+            
             try
             {
                 await _container.CreateItemAsync(note, new PartitionKey(partitionKey));
