@@ -2,6 +2,8 @@
 {
     public interface IAiService
     {
-        public Task<string> CompletionAsync(string chatMsg);
+        public Task<Completion> CompletionAsync(string sysMsg, string chatMsg);
+
+        public Task<byte[]> SpeechAsync(string text);
     }
 }

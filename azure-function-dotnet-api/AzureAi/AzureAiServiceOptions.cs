@@ -6,7 +6,10 @@ namespace EvokeApi.AzureAi
         public string ApiKey { get; set; }
         public string DeploymentName { get; set; }
         public string ModelVersion { get; set; }
-
-        public string SystemMessage { get; set; } = "You are a note taking assistant. You will help the user to complete their notes based on the partial information given. responses should be concise and clear. the completed notes should be created in a way to help users memorize important content.";
+        public string TargetLanguage { get; set; } = "Spanish";
+        public string TranslatedLanguage { get; set; } = "English";
+        public string SpeechKey { get; set; }
+        public string SpeechEndpoint { get; set; }
+        public string SpeechVoicename { get; set; } = "es-ES-ArabellaMultilingualNeural";
     }
 }

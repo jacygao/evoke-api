@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace EvokeApi.Database
 {
-    public class Note
+    public class Message
     {
         [JsonProperty("id")]
         [JsonPropertyName("id")]
@@ -12,10 +12,6 @@ namespace EvokeApi.Database
         [JsonProperty("userId")]
         [JsonPropertyName("userId")]
         public string UserId { get; set; }
-
-        [JsonProperty("title")]
-        [JsonPropertyName("title")]
-        public string Title { get; set; }
 
         [JsonProperty("content")]
         [JsonPropertyName("content")]

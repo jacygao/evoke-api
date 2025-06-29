@@ -45,7 +45,7 @@ namespace EvokeApi.Database
 
         public async Task<IEnumerable<Note>> GetAll(string userId)
         {
-            var queryDefinition = new QueryDefinition("SELECT * FROM c WHERE c.UserId = @userId")
+            var queryDefinition = new QueryDefinition("SELECT * FROM c WHERE c.userId = @userId")
                 .WithParameter("@userId", userId);
             var queryIterator = _container.GetItemQueryIterator<Note>(queryDefinition);
             var results = new List<Note>();
